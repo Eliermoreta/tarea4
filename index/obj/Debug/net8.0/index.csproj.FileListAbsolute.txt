@@ -1,0 +1,6 @@
+C:\Users\elier\Desktop\tarea4 blazor\index\obj\Debug\net8.0\index.csproj.AssemblyReference.cache
+C:\Users\elier\Desktop\tarea4 blazor\index\obj\Debug\net8.0\index.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\elier\Desktop\tarea4 blazor\index\obj\Debug\net8.0\index.AssemblyInfoInputs.cache
+C:\Users\elier\Desktop\tarea4 blazor\index\obj\Debug\net8.0\index.AssemblyInfo.cs
+C:\Users\elier\Desktop\tarea4 blazor\index\obj\Debug\net8.0\index.csproj.CoreCompileInputs.cache
+C:\Users\elier\Desktop\tarea4 blazor\index\obj\Debug\net8.0\index.MvcApplicationPartsAssemblyInfo.cache

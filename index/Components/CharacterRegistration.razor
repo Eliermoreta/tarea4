@@ -1,0 +1,61 @@
+@page "/register-character"
+@inject CharacterService CharacterService
+@inject MediaService MediaService
+
+<h3>Registrar Personaje</h3>
+
+<EditForm Model="@personaje" OnValidSubmit="HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div>
+        <label>Nombre:</label>
+        <InputText @bind-Value="personaje.Nombre" />
+    </div>
+    <div>
+        <label>Apodo:</label>
+        <InputText @bind-Value="personaje.Apodo" />
+    </div>
+    <div>
+        <label>Raza:</label>
+        <InputText @bind-Value="personaje.Raza" />
+    </div>
+    <div>
+        <label>Foto URL:</label>
+        <InputText @bind-Value="personaje.FotoUrl" />
+    </div>
+    <div>
+        <label>Edad:</label>
+        <InputNumber @bind-Value="personaje.Edad" />
+    </div>
+    <div>
+        <label>Poder Característico:</label>
+        <InputText @bind-Value="personaje.PoderCaracteristico" />
+    </div>
+    <div>
+        <label>Selecciona una serie/película/libro:</label>
+        <select @bind="personaje.MediaItemId">
+            @foreach (var media in mediaItems)
+            {
+                <option value="@media.Id">@media.Nombre</option>
+            }
+        </select>
+    </div>
+    <button type="submit">Registrar</button>
+</EditForm>
+
+@code {
+    private Personaje personaje = new Personaje();
+    private List<MediaItem> mediaItems;
+
+    protected override async Task OnInitializedAsync()
+    {
+        mediaItems = await MediaService.GetMediaItems();
+    }
+
+    private async Task HandleValidSubmit()
+    {
+        await CharacterService.AddCharacter(personaje);
+        personaje = new Personaje(); // Reinicia el formulario
+    }
+}

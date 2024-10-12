@@ -1,0 +1,39 @@
+@page "/register-media"
+@inject MediaService MediaService
+
+<h3>Registrar Serie/Película/Libro</h3>
+
+<EditForm Model="@mediaItem" OnValidSubmit="HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    
+    <div>
+        <label>Nombre:</label>
+        <InputText @bind-Value="mediaItem.Nombre" />
+    </div>
+    <div>
+        <label>País:</label>
+        <InputText @bind-Value="mediaItem.Pais" />
+    </div>
+    <div>
+        <label>Idioma:</label>
+        <InputText @bind-Value="mediaItem.Idioma" />
+    </div>
+    <div>
+        <label>Foto URL:</label>
+        <InputText @bind-Value="mediaItem.FotoUrl" />
+    </div>
+    <div>
+        <label>Resumen:</label>
+        <InputTextArea @bind-Value="mediaItem.Resumen" />
+    </div>
+    <button type="submit">Registrar</button>
+</EditForm@code {
+    private MediaItem mediaItem = new MediaItem();
+
+    private async Task HandleValidSubmit()
+    {
+        await MediaService.AddMediaItem(mediaItem);
+        mediaItem = new MediaItem(); // Reinicia el formulario
+    }
+}
